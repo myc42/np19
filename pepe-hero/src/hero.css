@@ -55,3 +55,32 @@
   .ph-cloud-m{display:block}
   .ph-title{bottom:var(--sp-md)}
 }
+
+/* ═════════ GRAND ÉCRAN (≥ 1800 px) ═════════
+   Tout ce qui suit ne s’applique qu’à partir de 1800 px de large.
+   Sous ce seuil (Mac, portables, tablettes, téléphones) : aucun changement.
+   Les sélecteurs sont volontairement à 2 classes : « .ph-clouds svg » (plus haut) est plus spécifique
+   qu’une seule classe, donc « .ph-cloud-x{display:none} » seul ne masquerait rien. */
+.ph-clouds .ph-cloud-w{display:none}
+
+@media (min-width:1800px){
+  /* Nuages : mêmes bosses que sur Mac, plus nombreuses, jamais étirées */
+  .ph-clouds .ph-cloud-d,
+  .ph-clouds .ph-cloud-m{display:none}
+  .ph-clouds .ph-cloud-w{display:block}
+
+  /* Titre : deux lignes, « NICOLAS PÉPÉ » ensemble, comme sur Mac (8.2em ≈ 1310 px à 160 px de corps) */
+  .ph .ph-title h1{max-width:8.2em;margin-inline:auto;text-wrap:balance}
+  .ph .ph-title h1 .ph-name{white-space:nowrap}
+
+  /* Le blanc sous les courbes : le texte remonte un peu pour laisser une bande crème avant la section suivante */
+  .ph .ph-title{bottom:10%}
+}
+
+/* ═════════ TÉLÉPHONE (≤ 700 px) : nuages ═════════
+   Les règles « display » du bloc plus haut ne s’appliquaient pas (« .ph-clouds svg » est plus spécifique) :
+   le SVG ordinateur, écrasé, s’affichait à la place du SVG téléphone. Ici : 2 classes, donc elles s’appliquent. */
+@media (max-width:700px){
+  .ph-clouds .ph-cloud-d{display:none}
+  .ph-clouds .ph-cloud-m{display:block}
+}

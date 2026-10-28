@@ -56,9 +56,16 @@ const warm = src => new Promise(res => { const v = document.createElement("video
 
 const CLOUD_BACK = Array.from({ length: 13 }, (_, k) => [k * 135, 210 + (k % 3) * 22, 90 + ((k * 37) % 40)]);
 const CLOUD_FRONT = Array.from({ length: 11 }, (_, k) => [80 + k * 160, 322 + (k % 2) * 14, 80 + ((k * 53) % 45)]);
-// Version téléphone : quelques grandes courbes (rayon 58 à 72), sans déformation.
-const CLOUD_BACK_M = [[-10, 190, 66], [112, 192, 72], [236, 190, 64], [356, 193, 70], [440, 190, 66]];
-const CLOUD_FRONT_M = [[10, 278, 60], [128, 280, 66], [250, 277, 58], [372, 281, 64]];
+// Téléphone : moitié moins de courbes qu’avant (7 derrière / 6 devant, contre 13 / 11), rondes et sans déformation.
+// Pour changer le nombre de courbes : NB_M (derrière) et NF_M (devant).
+const NB_M = 7, NF_M = 6;
+const CLOUD_BACK_M = Array.from({ length: NB_M + 1 }, (_, k) => [r2(k * 400 / NB_M), 190 + (k % 3) * 8, r2(0.62 * 400 / NB_M + ((k * 5) % 7))]);
+const CLOUD_FRONT_M = Array.from({ length: NF_M + 1 }, (_, k) => [r2(k * 400 / NF_M), 278 + (k % 2) * 8, r2(0.62 * 400 / NF_M + ((k * 3) % 5) * 1.5)]);
+// Grand écran (≥ 1800 px) : mêmes formes et mêmes formules que la version ordinateur, mais plus nombreuses
+// (viewBox 4800 de large, recadré au centre) : les bosses gardent la taille qu’elles ont sur Mac, sans étirement.
+const CW = 4800;
+const CLOUD_BACK_W = Array.from({ length: Math.ceil(CW / 135) + 1 }, (_, k) => [k * 135, 210 + (k % 3) * 22, 90 + ((k * 37) % 40)]);
+const CLOUD_FRONT_W = Array.from({ length: Math.ceil(CW / 160) + 1 }, (_, k) => [80 + k * 160, 322 + (k % 2) * 14, 80 + ((k * 53) % 45)]);
 
 // Garde « NICOLAS PÉPÉ » ensemble : seule la partie avant peut passer à la ligne.
 const Title = ({ text }) => {
@@ -225,6 +232,10 @@ export default function Hero() {
         <svg className="ph-cloud-m" viewBox="0 0 400 340" preserveAspectRatio="xMidYMax slice">
           <g className="ph-cloud-back">{CLOUD_BACK_M.map(([x, y, r], k) => <circle key={k} cx={x} cy={y} r={r} />)}<rect y="190" width="400" height="150" /></g>
           <g className="ph-cloud-front">{CLOUD_FRONT_M.map(([x, y, r], k) => <circle key={k} cx={x} cy={y} r={r} />)}<rect y="278" width="400" height="62" /></g>
+        </svg>
+        <svg className="ph-cloud-w" viewBox={`0 0 ${CW} 420`} preserveAspectRatio="xMidYMax slice">
+          <g className="ph-cloud-back">{CLOUD_BACK_W.map(([x, y, r], k) => <circle key={k} cx={x} cy={y} r={r} />)}<rect y="270" width={CW} height="150" /></g>
+          <g className="ph-cloud-front">{CLOUD_FRONT_W.map(([x, y, r], k) => <circle key={k} cx={x} cy={y} r={r} />)}<rect y="335" width={CW} height="85" /></g>
         </svg>
       </div>
 
