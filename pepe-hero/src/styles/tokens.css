@@ -1,0 +1,193 @@
+/* ═══════════════════════════════════════════════════════════════════
+   TOKENS — source unique de vérité du design system
+   Nicolas Pépé — Site
+
+   Ne jamais écrire une couleur, une taille ou une durée en dur dans
+   une page. Tout part d'ici.
+
+   SOMMAIRE
+   01. Couleurs            06. Bordures & ombres
+   02. Typo — famille      07. Mouvement
+   03. Typo — tracking     08. Profondeur
+   04. Espacements         09. Scène du hero
+   05. Layout
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── 01. COULEURS ─────────────────────────────────────────────── */
+  --c-bg:            #ffffff;   /* fond principal de page          */
+  --c-bg-soft:       #fafafa;   /* champs */
+  --c-bg-invert:     #0c0c0c;   /* blocs sombres, footer */
+
+  --c-text:          #0c0c0c;   /* texte principal */
+  --c-text-soft:     rgba(0,0,0,0.5);   /* texte secondaire, nav */
+  --c-text-body: rgba(0,0,0,0.7);   /* paragraphes et noms de ligne */
+  --c-text-muted:    rgba(0,0,0,0.45);   /* étiquettes, métadonnées */
+  --c-text-faint:    rgba(0,0,0,0.3);   /* décor uniquement */
+  --c-text-invert:   #ffffff;   /* texte sur fond sombre */
+
+  --c-accent:        #cb4b32;   /* filets et soulignements */  /* Palette : bleu, vert, rouge-orangé. Un rôle par couleur. */  --c-blue-50:   #eff1f8;  --c-blue-100:  #dde2f1;  --c-blue-500:  #5d73b8;  --c-blue-700:  #46589a;  --c-blue-900:  #2c3866;  --c-green-50:  #eef5f0;  --c-green-100: #dcebe2;  --c-green-500: #5b8f6e;  --c-green-700: #44705a;  --c-red-50:    #fcefec;  --c-red-100:   #f6d3cc;  --c-red-500:   #cb4b32;  --c-red-700:   #9f3822;  --c-orange-haze: rgba(203,75,50,0.12);   /* brume sous les bannières */  /* Anciens noms conservés pour ne rien casser ailleurs */  --g-orange: linear-gradient(180deg, var(--c-red-100) 0%, var(--c-red-50) 100%);  --g-green:  var(--c-bg-invert);  --c-action:       var(--c-blue-500);   /* boutons principaux */  --c-action-hover: var(--c-blue-700);  --c-hover:        var(--c-blue-50);    /* survol d'une ligne */
+  --c-accent-warm:   #8b2e2e;   /* rouge/terre                     */
+
+  --c-border:        rgba(0,0,0,0.08);
+  --c-border-strong: rgba(0,0,0,0.12);   /* lignes des tableaux */
+  --c-border-invert: rgba(255,255,255,0.08);   /* ligne sur fond sombre */
+  --c-border-invert-strong: rgba(255,255,255,0.2);   /* bouton sur fond sombre */
+  --c-bg-clear: rgba(255,255,255,0);   /* début des dégradés vers le blanc */
+  --c-nav-dark: rgba(255,255,255,0.65);   /* nav sur le hero */
+  --c-on-dark: rgba(255,255,255,0.8);   /* bouton du footer, sur le vert */
+  --c-on-dark-soft: rgba(255,255,255,0.6);   /* texte du footer, sur le vert */
+  --c-on-dark-muted: rgba(255,255,255,0.5);   /* liens du footer, sur le vert */
+  --c-on-dark-hover: rgba(255,255,255,0.9);   /* survol dans le footer */
+  --c-overlay:       rgba(0,0,0,0.6);   /* fond derrière une fenêtre */
+
+
+  /* ── 02. TYPOGRAPHIE — FAMILLE & GRAISSES ─────────────────────── */
+  --font: 'TWK Lausanne', system-ui, -apple-system, sans-serif;
+
+  --w-light:   300;   /* display, corps de texte, grands titres     */
+  --w-regular: 400;   /* labels UI, nav, capitales                  */
+  --w-medium:  500;   /* CTA, accents                               */
+
+  /* Base html = 10px, donc 1rem = 10px. Échelle fermée. */
+  --ts-3xs:  0.9rem;   /*   9px  en-têtes de tableau, étiquettes */
+  --ts-2xs:  1.0rem;                       /*  10px  légal, méta        */
+  --ts-xs:   1.1rem;                       /*  11px  eyebrows, tags     */
+  --ts-sm:   1.2rem;   /*  12px  texte secondaire, dates */
+  --ts-base: 1.4rem;   /*  14px  corps, noms de ligne */
+  --ts-md:   1.5rem;   /*  15px  chapô */
+  --ts-lg:   1.8rem;   /*  18px  citations, introduction */
+  --ts-xl:   clamp(2rem, 2.4vw, 2.6rem);   /*  20–26  titres de partie */
+  --ts-2xl:  clamp(3.2rem, 4.5vw, 5.2rem);   /*  32–52  titre de section */
+  --ts-title: clamp(2.6rem, 3.2vw, 3.6rem);   /* 26–36  titres de partie */
+  --ts-3xl:  clamp(4rem,    8vw,  10rem);  /*  40–100 titres majeurs    */
+  --ts-4xl:  clamp(6rem,   12vw,  15rem);  /*  60–150 display           */
+  --ts-hero: clamp(7rem,   13vw,  16rem);  /*  70–160 nom en hero       */
+
+
+  /* ── 03. TRACKING & INTERLIGNES ───────────────────────────────── */
+  --ls-tight:  -0.04em;    /* hero, plus grand display              */
+  --ls-snug:  -0.025em;    /* titres de section                     */
+  --ls-normal:     0em;    /* corps de texte                        */
+  --ls-open:    0.04em;    /* eyebrows                              */
+  --ls-wide:    0.12em;   /* liens footer, légendes */
+  --ls-wider:   0.16em;    /* nav, labels UI                        */
+  --ls-widest:  0.22em;    /* petites capitales                     */
+  --ls-ultra: 0.35em;   /* étiquette sur bannière */
+
+  --lh-display: 0.85;      /* hero                                  */
+  --lh-tight:   0.92;      /* titres de section                     */
+  --lh-snug:    1.05;      /* sous-titres                           */
+  --lh-normal:  1.45;      /* UI, nav                               */
+  --lh-relaxed: 1.65;      /* paragraphes                           */
+  --lh-loose:   1.85;      /* petits textes                         */
+
+
+  /* ── 04. ESPACEMENTS ──────────────────────────────────────────── */
+  --sp-3xs:  0.4rem;   /*   4px */
+  --sp-2xs:  0.8rem;   /*   8px */
+  --sp-xs:   1.2rem;   /*  12px */
+  --sp-sm:   1.6rem;   /*  16px */
+  --sp-md:   2.4rem;   /*  24px */
+  --sp-lg:   4.0rem;   /*  40px */
+  --sp-xl:   6.4rem;   /*  64px */
+  --sp-2xl: 10.0rem;   /* 100px */
+  --sp-3xl: 16.0rem;   /* 160px */
+
+  --section-y:   clamp(8rem, 12vw, 18rem);
+  --section-y-s: clamp(5rem,  8vw, 10rem);
+
+
+  /* ── 05. LAYOUT ───────────────────────────────────────────────── */
+  --nav-h:        72px;
+  --side-w:       16rem;   /* largeur du nav latéral ; 0 sur mobile */
+  --gutter:       clamp(2rem, 5vw, 6rem);
+  --maxw:         160rem;
+  --maxw-text:    72rem;
+  --maxw-narrow: 42rem;   /* texte court du footer */
+
+  --radius-none:  0;
+  --radius-sm:    2px;
+  --radius-md:    4px;
+  --radius-full:  999px;
+
+
+  
+  /* ── 06. BORDURES & OMBRES ────────────────────────────────────── */
+  --bw-hair:   1px;
+  --bw-thick:  2px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,0.12);
+
+
+  /* ── 07. MOUVEMENT ────────────────────────────────────────────────
+     Le site ne fait que des changements d'état au survol. Seule
+     exception : le hero (son entrée est pilotée en JS, et son titre
+     apparaît avec --dur-reveal).                                   */
+  --dur-fast:   0.15s;
+  --dur-base:   0.20s;
+  --dur-reveal: 1.2s;   /* hero uniquement : titre, en-tête, loader */
+
+  --ease: cubic-bezier(0.65, 0.01, 0.05, 0.99);
+
+
+  /* ── 08. PROFONDEUR ───────────────────────────────────────────── */
+  --z-base:    1;
+  --z-sticky:  100;
+  --z-menu:    400;
+  --z-nav:     500;
+  --z-loader:  1000;
+  --z-modal:    900;   /* fenêtre de contact */
+
+
+  /* ── 09. SCÈNE DU HERO ────────────────────────────────────────────
+     Les tailles en px doivent rester alignées avec les constantes
+     de Hero.jsx (cartes 124px, hauteur max 880px).                 */
+  --hero-h:        min(100svh, 880px);
+  --hero-h-min:    560px;
+  --hero-card-w:   124px;
+
+--scene-night:       #2c3866;
+--scene-sky-top:     #2c3866;
+--scene-sky-mid:     #5d73b8;
+--scene-sky-low:     #e3a08f;
+--scene-sky-horizon: #f7d9c8;
+  --scene-glow-warm:   rgba(255,226,180,0.55);
+  --scene-glow-cool:   rgba(160,190,255,0.35);
+  --scene-cloud-back:  #c9d6ee;   /* nuages : toujours opaques       */
+  --scene-cloud-front: #fffaf2;
+  --scene-ink:         #161c2b;   /* dos des cartes                  */
+  --shadow-card:       0 22px 40px -22px rgba(10,12,40,0.7);
+}
+
+
+/* ═══ THÈME INVERSÉ ═══════════════════════════════════════════════
+   À poser sur <html data-theme="dark"> ou sur n'importe quel bloc. */
+
+[data-theme='dark'] {
+  --c-bg:            #0c0c0a;
+  --c-bg-soft:       #16150f;
+  --c-bg-invert:     #f2ede4;
+
+  --c-text:          #f2ede4;
+  --c-text-soft:     rgba(242,237,228,0.62);
+  --c-text-muted:    rgba(242,237,228,0.35);
+  --c-text-faint:    rgba(242,237,228,0.14);
+  --c-text-invert:   #111111;
+
+  --c-border:        rgba(242,237,228,0.10);
+  --c-border-strong: rgba(242,237,228,0.24);
+  --c-border-invert: rgba(0,0,0,0.12);
+}
+
+@media (max-width: 900px) {
+  :root { --nav-h: 60px; --side-w: 0px; }
+}
+
+/* Mouvement réduit : toutes les transitions CSS tombent à zéro, en un seul endroit. */
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0s; --dur-base: 0s; --dur-reveal: 0s; }
+}

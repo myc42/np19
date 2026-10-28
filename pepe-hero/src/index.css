@@ -1,0 +1,34 @@
+@import "./styles/tokens.css";
+
+/* Seule la graisse 300 est fournie. Ajoutez ici d'autres fichiers pour 400 et 500 si vous les avez :
+@font-face { font-family: "TWK Lausanne"; src: url("/fonts/TWKLausanne-400.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "TWK Lausanne"; src: url("/fonts/TWKLausanne-500.otf") format("opentype"); font-weight: 500; font-display: swap; }
+*/
+@font-face {
+  font-family: "TWK Lausanne";
+  src: url("/fonts/TWKLausanne-300.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 62.5%; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--ts-base);
+  font-weight: var(--w-light);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-normal);
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible { outline: var(--bw-thick) solid currentColor; outline-offset: var(--sp-3xs); }
+
+.app { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }

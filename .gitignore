@@ -1,0 +1,22 @@
+# Dépendances Node.js
+node_modules/
+dist/
+build/
+
+# Fichiers multimédias et lourds (partout dans le projet)
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.svg
+*.gif
+
+# Dossiers de sauvegarde / cachés spécifiques
+src.bak/
+.couleurs-avant/
+**/ .couleurs-avant/
+
+# Logs et fichiers système OS
+.DS_Store
+Thumbs.db

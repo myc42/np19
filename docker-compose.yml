@@ -1,0 +1,12 @@
+services:
+  pepe:
+    build: ./image
+    image: pepe-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./pepe-hero:/app
+      - node_modules:/app/node_modules
+
+volumes:
+  node_modules:

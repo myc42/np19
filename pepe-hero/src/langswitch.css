@@ -1,0 +1,14 @@
+.lang { display: inline-flex; align-items: center; gap: .55em; margin-top: 1.5rem; font-size: .8125rem; letter-spacing: .08em; color: inherit; }
+.lang-btn { background: none; border: 0; padding: .25em .1em; font: inherit; color: inherit; cursor: pointer; opacity: .55; transition: opacity .2s; }
+.lang-btn:hover { opacity: 1; }
+.lang-btn[aria-pressed="true"] { opacity: 1; font-weight: 700; cursor: default; }
+.lang-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 2px; }
+.lang-sep { opacity: .4; }
+
+/* Réactive les clics même si le nav parent les bloque, et force une couleur lisible selon le fond. */
+.lang, .lang-btn { pointer-events: auto; }
+.lang { position: relative; z-index: 2; }
+.lang-btn { cursor: pointer; padding: .5em .45em; }
+.lang-btn[aria-pressed="true"] { cursor: default; }
+.sn[data-on="dark"] .lang { color: #fff; }
+.sn[data-on="light"] .lang { color: #111; }

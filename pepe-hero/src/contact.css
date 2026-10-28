@@ -1,0 +1,20 @@
+/* Fenêtre de contact */
+.modal{position:fixed;inset:0;z-index:var(--z-modal);display:grid;place-items:center;padding:var(--sp-md);overflow-y:auto;background:var(--c-overlay);visibility:hidden;opacity:0;transition:opacity var(--dur-base) var(--ease),visibility 0s var(--dur-base)}
+.modal.open{visibility:visible;opacity:1;transition:opacity var(--dur-base) var(--ease)}
+.modal-box{position:relative;width:100%;max-width:56rem;margin:auto;padding:var(--sp-lg);background:var(--c-bg);color:var(--c-text);border-radius:var(--radius-md);box-shadow:var(--shadow-lg)}
+.modal-close{position:absolute;top:var(--sp-sm);right:var(--sp-sm);padding:var(--sp-2xs);font:inherit;font-size:var(--ts-lg);line-height:1;color:inherit;background:none;border:0;cursor:pointer;transition:opacity var(--dur-base) var(--ease)}
+.modal-close:hover{opacity:.5}
+.modal h2{margin:0 0 var(--sp-md);font-size:var(--ts-xl);font-weight:var(--w-light);letter-spacing:var(--ls-snug);line-height:var(--lh-snug)}
+.modal form{display:grid;gap:var(--sp-sm)}
+.modal label{display:grid;gap:var(--sp-3xs);font-size:var(--ts-xs);font-weight:var(--w-regular);letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--c-text-soft)}
+.modal input,.modal select,.modal textarea{font:inherit;font-size:var(--ts-base);font-weight:var(--w-light);letter-spacing:var(--ls-normal);text-transform:none;color:var(--c-text);background:var(--c-bg-soft);border:var(--bw-hair) solid var(--c-border-strong);border-radius:var(--radius-sm);padding:var(--sp-xs)}
+.modal .modal-check{display:flex;align-items:flex-start;gap:var(--sp-xs);font-size:var(--ts-sm);letter-spacing:var(--ls-normal);text-transform:none}
+.modal .modal-check input{flex:none;margin-top:var(--sp-3xs);padding:0}
+.modal a{color:inherit}
+.modal-submit{justify-self:start;font:inherit;font-size:var(--ts-sm);font-weight:var(--w-medium);letter-spacing:var(--ls-wider);text-transform:uppercase;color:var(--c-text-invert);background:var(--c-bg-invert);border:0;border-radius:var(--radius-sm);padding:var(--sp-xs) var(--sp-md);cursor:pointer;transition:opacity var(--dur-base) var(--ease)}
+.modal-submit:hover{opacity:.8}
+.modal-success p{margin:0;font-size:var(--ts-md);line-height:var(--lh-relaxed);color:var(--c-text-soft)}
+
+/* couleurs : orange et vert */
+.modal-submit{background:var(--c-action)}
+.modal-submit:hover{background:var(--c-action-hover);opacity:1}
