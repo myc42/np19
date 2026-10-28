@@ -1,0 +1,65 @@
+/* Couche de finition, chargée en dernier. Tout s'appuie sur tokens.css.
+   Pour la retirer : supprimer l'import dans main.jsx. */
+
+/* ── Lecture ── */
+h1, h2, h3, .cover-title, .ct-title { text-wrap: balance; }
+.ap-col p, .pg-main p { text-wrap: pretty; hyphens: auto; overflow-wrap: break-word; }
+.ap-col { max-width: 68ch; }
+.ct td { font-variant-numeric: tabular-nums; }
+a, button { -webkit-tap-highlight-color: transparent; }
+
+/* ── Hero : sous-titre plus lisible sur les nuages (0,5 → 0,7 de noir) et lignes plus courtes ── */
+.ph-title p { max-width: var(--maxw-text); margin-left: auto; margin-right: auto; color: var(--c-text-body); text-wrap: balance; }
+
+/* ── Toucher : zones de 44 px minimum, sans changer le dessin ── */
+@media (pointer: coarse) {
+  .sn-burger::before, .sn-contact::before, .modal-close::before, .ph-skip::before { content: ""; position: absolute; inset: -12px; }
+  .sn-menu a { display: flex; align-items: center; min-height: 44px; padding-top: 0; padding-bottom: 0; }
+  .footer-link, .footer-social, .footer-cta, .ct-btn { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* ── Téléphone ── */
+@media (max-width: 767px) {
+  .modal { padding: var(--sp-sm); }
+  .modal-box { padding: var(--sp-md); }
+  /* 16 px minimum : sinon l'iPhone zoome tout seul quand on touche un champ */
+  .modal .modal-box input, .modal .modal-box select, .modal .modal-box textarea { font-size: max(16px, var(--ts-base)); }
+  .footer-copy, .footer-link, .footer-social { font-size: var(--ts-xs); }
+}
+@media (max-width: 700px) {
+  /* Titre du hero sur téléphone : marges réduites, et le nom reste sur une seule ligne.
+     Réglages : 13vw (taille), 22% (hauteur depuis le bas), var(--sp-xs) (marge de côté). */
+  .ph .ph-title { bottom: 22%; padding: 0 var(--sp-xs); }
+  .ph-title h1 { font-size: clamp(3.6rem, 13vw, 7rem); line-height: 1.1; }
+  .ph-name { white-space: nowrap; }
+}
+@media (max-width: 640px) {
+  /* Tableau de carrière : 4 colonnes serrées → une carte par ligne (club + bouton, puis date + transfert) */
+  .ct, .ct tbody { display: block; }
+  .ct thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ct tr { display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "club club act" "date type type"; align-items: center; gap: var(--sp-3xs) var(--sp-sm); padding: var(--sp-sm) 0; border-bottom: var(--bw-hair) solid var(--c-border-strong); }
+  .ct td { display: block; padding: 0; border: 0; }
+  .ct td:nth-child(1) { grid-area: date; font-size: var(--ts-sm); color: var(--c-text-muted); }
+  .ct td:nth-child(2) { grid-area: club; font-size: var(--ts-md); }
+  .ct td:nth-child(3) { grid-area: type; font-size: var(--ts-sm); color: var(--c-text-muted); }
+  .ct td:nth-child(4) { grid-area: act; }
+}
+
+/* ── Grand écran : à partir de 1920 px, la base passe progressivement de 10 px à 13 px maximum.
+   Le corps de texte monte de 14 à 18 px et la largeur maximale du contenu (160rem) suit. ── */
+@media (min-width: 1920px) {
+  html { font-size: clamp(62.5%, 0.5208vw, 81.25%); }
+  .ph-title h1 { font-size: 160px; } /* le hero garde sa taille : sa scène est en pixels */
+}
+
+/* Titre du hero sur ordinateur : l'interligne de 0,85 colle les deux lignes. */
+@media (min-width: 701px) {
+  /* Hauteur du titre depuis le bas du hero : 8 % à l'origine, baissé de 20 % puis de 15 %. Plus bas : 5% · plus haut : 8% */
+  .ph .ph-title { bottom: 5.4%; }
+  .ph-title h1 { line-height: var(--lh-snug); } /* 1,05. Plus d'espace : 1.2 · moins : 1 */
+}
+
+/* Carrousel du hero sur téléphone : le hero est plus court que les 880 px prévus, la roue sortait par le haut. */
+@media (max-width: 700px) {
+  .ph .ph-scene { transform: translateY(6%); } /* plus bas : 8% · moins : 4% */
+}

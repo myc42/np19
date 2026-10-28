@@ -1,14 +1,16 @@
-.lang { display: inline-flex; align-items: center; gap: .55em; margin-top: 1.5rem; font-size: .8125rem; letter-spacing: .08em; color: inherit; }
-.lang-btn { background: none; border: 0; padding: .25em .1em; font: inherit; color: inherit; cursor: pointer; opacity: .55; transition: opacity .2s; }
-.lang-btn:hover { opacity: 1; }
-.lang-btn[aria-pressed="true"] { opacity: 1; font-weight: 700; cursor: default; }
-.lang-btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 2px; }
-.lang-sep { opacity: .4; }
+/* Sélecteur FR | EN : mêmes tokens et même style que le nav latéral. */
+.lang{display:inline-flex;align-items:center;gap:var(--sp-2xs);margin-top:var(--sp-md);font-size:var(--ts-xs);font-weight:var(--w-regular);letter-spacing:var(--ls-wider);line-height:var(--lh-normal);text-transform:uppercase}
+.sn-side .lang{align-self:flex-start;pointer-events:all} /* le nav laisse passer les clics : on les réactive ici */
+.lang-btn{position:relative;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--sn-link);background:none;border:0;padding:var(--sp-3xs) 0;cursor:pointer;transition:color var(--dur-base) var(--ease)}
+.lang-btn:hover{color:var(--sn-strong)}
+.lang-btn[aria-pressed="true"]{color:var(--sn-strong);cursor:default;text-decoration:underline;text-decoration-color:var(--c-accent);text-decoration-thickness:var(--bw-hair);text-underline-offset:var(--sp-2xs)}
+.lang-sep{color:var(--sn-div)}
 
-/* Réactive les clics même si le nav parent les bloque, et force une couleur lisible selon le fond. */
-.lang, .lang-btn { pointer-events: auto; }
-.lang { position: relative; z-index: 2; }
-.lang-btn { cursor: pointer; padding: .5em .45em; }
-.lang-btn[aria-pressed="true"] { cursor: default; }
-.sn[data-on="dark"] .lang { color: #fff; }
-.sn[data-on="light"] .lang { color: #111; }
+/* Panneau mobile : fond blanc, donc couleurs du panneau et pas celles du nav */
+.sn-menu .lang{display:flex;margin:var(--sp-2xs) 0 0;padding:var(--sp-xs) var(--sp-md) var(--sp-2xs);border-top:var(--bw-hair) solid var(--c-border)}
+.sn-menu .lang-btn{color:var(--c-text-soft)}
+.sn-menu .lang-btn:hover,.sn-menu .lang-btn[aria-pressed="true"]{color:var(--c-text)}
+.sn-menu .lang-sep{color:var(--c-text-faint)}
+
+/* Doigt : zone de toucher agrandie sans bouger le dessin */
+@media (pointer:coarse){.lang-btn::before{content:"";position:absolute;inset:-12px -8px}}

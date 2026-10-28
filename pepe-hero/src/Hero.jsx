@@ -60,6 +60,12 @@ const CLOUD_FRONT = Array.from({ length: 11 }, (_, k) => [80 + k * 160, 322 + (k
 const CLOUD_BACK_M = [[-10, 190, 66], [112, 192, 72], [236, 190, 64], [356, 193, 70], [440, 190, 66]];
 const CLOUD_FRONT_M = [[10, 278, 60], [128, 280, 66], [250, 277, 58], [372, 281, 64]];
 
+// Garde « NICOLAS PÉPÉ » ensemble : seule la partie avant peut passer à la ligne.
+const Title = ({ text }) => {
+  const i = text.indexOf("NICOLAS");
+  return i < 0 ? text : <>{text.slice(0, i)}<span className="ph-name">{text.slice(i)}</span></>;
+};
+
 export default function Hero() {
   const { t } = useLang();
   const deal = useMotionValue(0), lift = useMotionValue(0);
@@ -223,7 +229,7 @@ export default function Hero() {
       </div>
 
       <div className={"ph-title" + (ui ? " in" : "")}>
-        <h1>{t("hero.title")}</h1>
+        <h1><Title text={t("hero.title")} /></h1>
         <p>{t("hero.tagline")}</p>
       </div>
       <div className={"ph-load" + (loaded ? " off" : "")} role="status">{t("hero.pct", { n: progress })}</div>
